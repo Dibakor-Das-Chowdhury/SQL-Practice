@@ -1,0 +1,17 @@
+--select first_name, last_name, allergies from patients where allergies is Not NULL and city = 'Hamilton';
+--select distinct year (birth_date) from patients order by year(birth_date) asc ;
+--select first_name from patients group by first_name having count(first_name)=1;
+
+--select patient_id, first_name from patients where first_name like 's____%s';
+--select patients.patient_id, patients.first_name, patients.last_name from patients inner join admissions on patients.patient_id= admissions.patient_id where admissions.diagnosis='Dementia';
+--select first_name from patients order by len(first_name), first_name asc;
+
+--select (select count(gender) from patients where gender='M') as male_count, count(gender) as Female_count from patients where gender='F';
+--select first_name, last_name, allergies from patients where allergies in ('Penicillin', 'Morphine') order by allergies, first_name, last_name asc;
+
+
+--select patient_id, diagnosis from admissions group by diagnosis, patient_id having count(patient_id) > 1;
+--select city, count(patient_id) as num_patients from patients group by city order by num_patients desc, city asc;
+--select first_name, last_name, 'Patient' as role from patients union all select first_name, last_name, 'Doctor' as role from doctors;
+--select allergies, count(*)  as total_diagnosis from patients group by allergies having allergies is not null order by total_diagnosis desc;
+--select first_name, last_name, birth_date from patients where year(birth_date) between 1970 and 1979 order by birth_date asc
