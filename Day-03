@@ -1,0 +1,36 @@
+--select first_name, last_name, count(*) as num_of_duplictes from patients group by first_name, last_name having num_of_duplictes>1; 
+
+--select concat (UPPER(last_name), ',', Lower(first_name)) from patients order by first_name desc;
+--select province_id, sum(height) from patients group by province_id having sum(height)>= 7000;
+--select  (max(weight)-min(weight)) as weight_delta from patients where last_name= 'Maroni';
+--select day(admission_date), Count(*) from admissions group by day(admission_date) order by count(*) desc;
+--select * FROM admissions where patient_id= 542 group by patient_id having max(admission_date);
+--select patient_id, attending_doctor_id, diagnosis FROM admissions where (patient_id%2=1 and attending_doctor_id in (1,5,19)) OR 
+--(attending_doctor_id like '%2%' and len(patient_id)= 3);
+--select first_name, last_name, count(*) from admissions inner join doctors on admissions.attending_doctor_id = doctors.doctor_id group by doctors.doctor_id;
+--select doctor_id, concat(first_name,' ',last_name) as full_name,min(admission_date) as first_admissio_date, max(admission_date) as last_admission_date from admissions join doctors on admissions.attending_doctor_id= doctors.doctor_id 
+--group by doctor_id; 
+--select province_name, count(patient_id) as patient_count from patients join province_names on patients.province_id=province_names.province_id group by province_name order by patient_count desc;
+/*
+select concat(p.first_name,' ', p.last_name), diagnosis, concat(doc.first_name,' ',doc.last_name) from patients p 
+join admissions ad on p.patient_id=ad.patient_id join doctors doc on ad.attending_doctor_id= doc.doctor_id;
+*/
+--select first_name, last_name, count(*) as num_of_duplictes from patients group by first_name, last_name having num_of_duplictes>1; 
+
+/*
+select concat(first_name, ' ',last_name), round(height/30.48, 1) as height, 
+round (weight*2.205,0) as weight, birth_date, 
+case 
+when gender= 'M' then 'MALE'
+when gender= 'F' then 'FEMALE' 
+END as gender_type
+from patients;
+*/
+
+--select patients.patient_id,first_name,last_name from patients where patients.patient_id not in (select admissions.patient_id from admissions);
+
+/*
+select p.patient_id, p.first_name, p.last_name, doc.specialty 
+from patients p inner join admissions ad on p.patient_id= ad.patient_id join doctors doc on ad.attending_doctor_id=doc.doctor_id
+where ad.diagnosis='Epilepsy' and doc.first_name='Lisa';
+*/
