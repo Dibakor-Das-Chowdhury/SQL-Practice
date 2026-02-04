@@ -1,0 +1,32 @@
+Write a solution to find the ids of products that are both low fat and recyclable?
+
+select product_id from products where low_fats='Y' and recyclable= 'Y';
+
+
+In SQL, id is the primary key column for this table.
+Each row of this table indicates the id of a customer, their name, and the id of the customer who referred them.
+ 
+Find the names of the customer that are either:
+
+referred by any customer with id != 2.
+not referred by any customer.
+Return the result table in any order.
+
+The result format is in the following example.
+select name from customer where referee_id!=2 or referee_id is null;
+
+
+Write a solution to report the product_name, year, and price for each sale_id in the Sales table.
+--select product_name, year, price from sales join product on sales.product_id=product.product_id;
+
+
+Write a solution to find the IDs of the users who visited without making any transactions and the number of times they made these types of visits.
+
+Return the result table sorted in any order.
+
+--select customer_id, count(*) as count_no_trans
+from visits where visit_id not in  
+(select visit_id from transactions)
+group by customer_id;
+;
+
